@@ -1,5 +1,5 @@
 {
-    "hash": "23e6df97b195b3caa886717d7e3502c4",
+    "hash": "295066edda43bd01aa6fe655025b6ab1",
     "packages": [
         {
             "name": "ircmaxell/password-compat",
@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/laravel/framework",
-                "reference": "b3ae2936a19339c4f3bfdbe107324ddf26e79541"
+                "reference": "fbadf3ae0a17dfdc07939802e4eca1b8dbfdce87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/laravel/framework/archive/b3ae2936a19339c4f3bfdbe107324ddf26e79541.zip",
-                "reference": "b3ae2936a19339c4f3bfdbe107324ddf26e79541",
+                "url": "https://github.com/laravel/framework/archive/fbadf3ae0a17dfdc07939802e4eca1b8dbfdce87.zip",
+                "reference": "fbadf3ae0a17dfdc07939802e4eca1b8dbfdce87",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "mockery/mockery": "0.7.2",
                 "iron-io/iron_mq": "1.4.*"
             },
-            "time": "2013-01-28 05:37:58",
+            "time": "2013-01-28 20:21:46",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -818,12 +818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Routing",
-                "reference": "v2.2.0-BETA2"
+                "reference": "de9d64780254f45cfa9d9e49602d0a63acf45f75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Routing/archive/v2.2.0-BETA2.zip",
-                "reference": "v2.2.0-BETA2",
+                "url": "https://github.com/symfony/Routing/archive/de9d64780254f45cfa9d9e49602d0a63acf45f75.zip",
+                "reference": "de9d64780254f45cfa9d9e49602d0a63acf45f75",
                 "shasum": ""
             },
             "require": {
@@ -841,7 +841,7 @@
                 "symfony/config": "2.2.*",
                 "symfony/yaml": "2.2.*"
             },
-            "time": "2013-01-21 16:57:32",
+            "time": "2013-01-28 09:55:07",
             "type": "library",
             "extra": {
                 "branch-alias": {
