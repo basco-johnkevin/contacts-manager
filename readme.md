@@ -1,3 +1,11 @@
+## Laravel 4.x BOOTSTRAP
+
+A simple Bootstrap of Larave 4.x, to be used as a starting point for developing apps with #L4.
+
+- Has a Base Model used for validating inside models instead of controllers (Copied from Dayle Reese)
+
+- Has a Base Controller which is using controller layouts.
+
 ## Laravel 4.x
 
 ### A Framework For Web Artisans
