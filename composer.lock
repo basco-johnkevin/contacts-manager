@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/laravel/framework",
-                "reference": "fbadf3ae0a17dfdc07939802e4eca1b8dbfdce87"
+                "reference": "b3e7df7894161dcc78d9f2dc11f33f3249c4fdbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/laravel/framework/archive/fbadf3ae0a17dfdc07939802e4eca1b8dbfdce87.zip",
-                "reference": "fbadf3ae0a17dfdc07939802e4eca1b8dbfdce87",
+                "url": "https://github.com/laravel/framework/archive/b3e7df7894161dcc78d9f2dc11f33f3249c4fdbb.zip",
+                "reference": "b3e7df7894161dcc78d9f2dc11f33f3249c4fdbb",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "mockery/mockery": "0.7.2",
                 "iron-io/iron_mq": "1.4.*"
             },
-            "time": "2013-01-28 20:21:46",
+            "time": "2013-01-29 05:19:57",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -143,12 +143,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/padraic/mockery.git",
-                "reference": "896cddd26190530931a2649a701a01fd5358d650"
+                "reference": "1a1a2228a009bb5b925bab7e575095eab91d6232"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/padraic/mockery/archive/896cddd26190530931a2649a701a01fd5358d650.zip",
-                "reference": "896cddd26190530931a2649a701a01fd5358d650",
+                "url": "https://github.com/padraic/mockery/archive/1a1a2228a009bb5b925bab7e575095eab91d6232.zip",
+                "reference": "1a1a2228a009bb5b925bab7e575095eab91d6232",
                 "shasum": ""
             },
             "require": {
@@ -160,7 +160,7 @@
             "suggest": {
                 "Hamcrest": "1.0.0"
             },
-            "time": "2013-01-11 12:37:28",
+            "time": "2013-01-29 00:38:35",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -605,18 +605,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder",
-                "reference": "v2.2.0-BETA2"
+                "reference": "d33658c34672f48474a669227ca3639fa0b443e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Finder/archive/v2.2.0-BETA2.zip",
-                "reference": "v2.2.0-BETA2",
+                "url": "https://github.com/symfony/Finder/archive/d33658c34672f48474a669227ca3639fa0b443e7.zip",
+                "reference": "d33658c34672f48474a669227ca3639fa0b443e7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-01-18 20:36:32",
+            "time": "2013-01-29 18:42:39",
             "type": "library",
             "extra": {
                 "branch-alias": {
