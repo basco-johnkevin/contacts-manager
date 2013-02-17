@@ -84,7 +84,7 @@ var app = app || {};
 
                 console.log(contactView.render().el);
 
-                $('#contact-list-con').append(contactView.render().el);      
+                $('#contact-list-table').append(contactView.render().el);      
             },
 
         });
