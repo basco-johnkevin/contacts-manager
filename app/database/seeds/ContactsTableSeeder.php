@@ -9,7 +9,7 @@ class ContactsTableSeeder extends Seeder {
         DB::table('contacts')->insert(array( 
  												'name' =>  'kevin', 
  				   								'email' => 'basco.johnkevin@gmail.com'
- 				   					  ));									 
+ 				   					  ));
     }
 
 }
