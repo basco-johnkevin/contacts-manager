@@ -39,7 +39,8 @@ var app = app || {};
             addContact: function() {
                 console.log('adding a new contact');
 
-                //$('#add-contact-form #submit-btn').attr('disable', 'disabled');
+                // disable submit button
+                $('#add-contact-form #submit-btn').attr("disabled", "disabled");
 
                 var contact = new app.Contact();
 
@@ -63,6 +64,13 @@ var app = app || {};
                         // add in contacts list
                         // this.contacts.add(model);
                         app.Contacts.add(model);
+
+                        // clear input fields
+                        $('#add-contact-form #name').val('');
+                        $('#add-contact-form #email').val('');
+
+                        // enable submit button
+                        $('#add-contact-form #submit-btn').removeAttr("disabled");
                     },
 
                     error: function (model, response) {

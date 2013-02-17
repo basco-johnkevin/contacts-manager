@@ -18,15 +18,15 @@ var app = app || {};
             urlRoot: 'contacts/',
 
             // custom urls
-            methodUrl:  function(method){
+            methodUrl:  function(method) {
                 if(method == "delete") {
-                        return "contacts/" + this.attributes.id;
-                    } else if (method == "update") {
-                        return "http://www.api.com/mymodel/" + this.attributes.id+"/update";
-                    } else if (method == "create") {
-                        return "contacts/";
-                    } 
-                    return false;
+                    return "contacts/" + this.attributes.id;
+                } else if (method == "update") {
+                    return "http://www.api.com/mymodel/" + this.attributes.id+"/update";
+                } else if (method == "create") {
+                    return "contacts/";
+                } 
+                return false;
             },
 
             // override the default backbone.sync for this model to use the custom urls defined in the methodUrl above
@@ -35,7 +35,7 @@ var app = app || {};
                     options = options || {};
                     options.url = model.methodUrl(method.toLowerCase());
                 }
-               Backbone.sync(method, model, options);
+                Backbone.sync(method, model, options);
             },
 
             validate: function (attrs, options) {
