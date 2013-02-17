@@ -79,12 +79,19 @@ class ContactsController extends BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
+	 * Returns the id of the contact that has been deleted on success or returns a json {failed: 'true'}
 	 *
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		//
+		$contact = Contact::find($id);
+
+		if ($contact->delete()) {
+			return $contact->id;
+		} else {
+			return json_encode(array('failed' => 'true'));
+		}
 	}
 
 }
