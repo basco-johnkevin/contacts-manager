@@ -52,6 +52,9 @@ var app = app || {};
                 // this will throw validation errors and stop saving of the new contact
                 contact.on("invalid", function(model, error) {
                     alert(error);
+
+                    // enable submit button
+                    $('#add-contact-form #submit-btn').removeAttr("disabled");
                 });
 
                 contact.save(contactDetails, {
