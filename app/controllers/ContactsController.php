@@ -10,6 +10,13 @@ class ContactsController extends BaseController {
 	public function index()
 	{
 		return 'index';
+
+		// $contact = Contact::create(array(
+		// 				'name' => 'testname',
+		// 				'email' => 'testemail',
+		// 		   ));
+
+		// var_dump($contact);
 	}
 
 	/**
@@ -19,7 +26,7 @@ class ContactsController extends BaseController {
 	 */
 	public function create()
 	{
-		//
+		
 	}
 
 	/**
@@ -29,7 +36,15 @@ class ContactsController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::json();
+
+		$contact = Contact::create(array(
+						'name' => $input->name,
+						'email' => $input->email,
+				   ));
+
+
+		return $contact;
 	}
 
 	/**

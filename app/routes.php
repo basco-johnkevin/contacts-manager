@@ -13,7 +13,4 @@
 
 Route::resource('contacts', 'ContactsController');
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array('uses' => 'AppController@render'));
