@@ -39,6 +39,8 @@ var app = app || {};
             addContact: function() {
                 console.log('adding a new contact');
 
+                //$('#add-contact-form #submit-btn').attr('disable', 'disabled');
+
                 var contact = new app.Contact();
 
                 var contactDetails = {

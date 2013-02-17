@@ -7,13 +7,24 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('packages/bootstrap/css/bootstrap.css') }}">
 
+	<link rel="stylesheet/less" type="text/css" href="{{ asset('assets/css/styles.less') }}" />
+
+	<script type="text/javascript" src="{{ asset('assets/js/libs/less/1.3.3/less.js') }}"></script>
+
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
 </head>
 <body>
-	{{{ $content }}}
+
+	<div class="container">
+
+	   	{{{ $content }}}
+
+    </div> <!-- /container -->
+
+	
 
 
 
