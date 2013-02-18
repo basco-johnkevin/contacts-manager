@@ -34,14 +34,29 @@ var app = app || {};
             render: function () {
                 // console.log(this);
 
+                // save the header row and headings row in the table before clearing the contents of the table
+                // we will be using this later
+                var contactListTableHeaderRow = $('#contact-list-table #contact-list-table-header-row').detach();
+                var contactListTableHeadingsRow = $('#contact-list-table #contact-list-table-headings-row').detach();
+
+                // clear the contents if the table
+                $('#contact-list-table').empty();
+
+                console.log(this.model.models.length);
+
                 // fetch all the contacts from the server
                 this.model.fetch({
 
                     success: function (model, response) {
                         //console.log(model.models[0].toJSON());
                         //console.log(response);   
-
                         // console.log(model.length);
+                       
+                        // focus the name field
+                        $('#add-contact-form #name').focus();
+
+                        $('#contact-list-table').append(contactListTableHeaderRow);
+                        $('#contact-list-table').append(contactListTableHeadingsRow);
 
                         var contactsListLength = model.length;
 
@@ -56,18 +71,10 @@ var app = app || {};
 
                         }
 
-
-
-
                         //console.log(contactView.render());
-
                         // console.log(contactView.render().el);
-
-
                         // $('#contact-list-table').append(contactView.render().el);   
-
-                       // $('#contact-list-table').append(contactView.render().el);   
-
+                        // $('#contact-list-table').append(contactView.render().el);
 
                     },
 
@@ -76,8 +83,6 @@ var app = app || {};
                     },
 
                 });
-
-                
 
                var tmpl = _.template(this.template);
                this.$el.html(tmpl);

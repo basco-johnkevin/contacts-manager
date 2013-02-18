@@ -30,10 +30,10 @@
 
 <div id="contact-list-con">
 	<table class="table table-bordered table-striped" id="contact-list-table">
-		<tr>
+		<tr id="contact-list-table-header-row">
 			<th id="table-header" colspan="3">List of all recorded contacts</th>
 		</tr>
-	 	<tr>
+	 	<tr id="contact-list-table-headings-row">
 			<th width="45%">Name</th>
 			<th width="45%">Email</th>
 			<th width="10%">Action</th>

@@ -16,6 +16,7 @@ $(function( $ ) {
 
         initialize: function(){
             _.bindAll(this, 'render'); // every function that uses 'this' as the current object should be in here
+            
         },
 
         render: function(){

@@ -13,6 +13,17 @@ var app = app || {};
 
 			url: 'contacts/',
 
+			initialize: function () {
+				//_.bindAll(this, 'notice');
+				//console.log(this);
+				//console.log('dasdasdasdasdas');
+
+			},
+
+			notice: function () {
+				alert('a model has been removed');
+			},
+
 		});
 
 		// instance of collection
