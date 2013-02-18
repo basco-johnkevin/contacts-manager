@@ -44,6 +44,10 @@ $(function( $ ) {
                     } else {
                         console.log(this);
                         console.log(self);
+
+                        // remove in the collection
+                        app.Contacts.remove(model);
+
                         // remove this view/item from the DOM
                         self.remove(); 
                     }

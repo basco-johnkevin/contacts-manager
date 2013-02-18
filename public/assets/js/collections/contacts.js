@@ -17,6 +17,8 @@ var app = app || {};
 				//_.bindAll(this, 'notice');
 				//console.log(this);
 				//console.log('dasdasdasdasdas');
+				//this.model.on('destroy', this.notice, this)
+				//console.log(this.model + 'model object baby');
 
 			},
 

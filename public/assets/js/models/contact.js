@@ -17,6 +17,10 @@ var app = app || {};
 
             urlRoot: 'contacts/',
 
+            // initialize: function () {
+            //     this.on('destroy', this.notice, this);
+            // },
+
             // custom urls
             methodUrl:  function(method) {
                 if(method == "delete") {
@@ -45,6 +49,10 @@ var app = app || {};
                 }
 
             },
+
+            // notice: function () {
+            //     alert('dasdasdasdasdasda');
+            // },
 
         });
 

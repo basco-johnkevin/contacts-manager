@@ -116,7 +116,7 @@ var app = app || {};
                         console.log(model);
                         console.log(response);
 
-                        // add in contacts list
+                        // add in contacts list collection
                         // this.contacts.add(model);
                         app.Contacts.add(model);
 
