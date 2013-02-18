@@ -15,6 +15,6 @@ var app = app || {};
         // create instance of master view
         new app.AppView({ model: app.Contacts });
         //new app.AppView();
-  });
+  	});
 
 } (jQuery));
