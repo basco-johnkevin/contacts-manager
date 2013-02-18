@@ -24,7 +24,8 @@ var app = app || {};
 
                 // listen to model events
                 // app.Contacts.bind('add', this.appendItem); // collection event binder
-                this.listenTo(app.Contacts, 'add', this.appendItem);
+                // this.listenTo(app.Contacts, 'add', this.appendItem);
+                this.listenTo(app.Contacts, 'add', this.render);
 
                 this.render();
                 // this.renderTodoList();
@@ -32,6 +33,52 @@ var app = app || {};
 
             render: function () {
                 // console.log(this);
+
+                // fetch all the contacts from the server
+                this.model.fetch({
+
+                    success: function (model, response) {
+                        //console.log(model.models[0].toJSON());
+                        //console.log(response);   
+
+                        // console.log(model.length);
+
+                        var contactsListLength = model.length;
+
+                        for (var i = 0; i < contactsListLength; i++) {
+                            // $('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
+
+                            var contactView = new app.ContactView({
+                                model: model.models[i]
+                            });
+
+                            $('#contact-list-table').append(contactView.render().el);  
+
+                        }
+
+
+
+
+                        //console.log(contactView.render());
+
+                        // console.log(contactView.render().el);
+
+
+                        // $('#contact-list-table').append(contactView.render().el);   
+
+                       // $('#contact-list-table').append(contactView.render().el);   
+
+
+                    },
+
+                    error: function () {
+                        console.log('failed fetching the contacts from the server');
+                    },
+
+                });
+
+                
+
                var tmpl = _.template(this.template);
                this.$el.html(tmpl);
             },
@@ -87,18 +134,18 @@ var app = app || {};
 
             // appends a new contact after saving, this is triggered by event add
             // when a new contact model is added to the contacts collection
-            appendItem: function (item) {
-                console.log('appending a new contact in the contact list');
-                // $('body').append('ahaha');
+            // appendItem: function (item) {
+            //     console.log('appending a new contact in the contact list');
+            //     // $('body').append('ahaha');
 
-                var contactView = new app.ContactView({
-                    model: item
-                });
+            //     var contactView = new app.ContactView({
+            //         model: item
+            //     });
 
-                console.log(contactView.render().el);
+            //     console.log(contactView.render().el);
 
-                $('#contact-list-table').append(contactView.render().el);      
-            },
+            //     $('#contact-list-table').append(contactView.render().el);      
+            // },
 
         });
 

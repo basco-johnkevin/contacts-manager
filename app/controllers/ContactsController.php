@@ -9,14 +9,8 @@ class ContactsController extends BaseController {
 	 */
 	public function index()
 	{
-		return 'index';
-
-		// $contact = Contact::create(array(
-		// 				'name' => 'testname',
-		// 				'email' => 'testemail',
-		// 		   ));
-
-		// var_dump($contact);
+		$contacts = Contact::all();
+		return $contacts;
 	}
 
 	/**

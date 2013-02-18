@@ -8,9 +8,13 @@ var app = app || {};
 
         console.log('jquery working in main.js');
 
-        // create instance of master view
-        new app.AppView();
+        //var contactList = new app.Contacts();
 
+        //console.log(app.Contacts);
+
+        // create instance of master view
+        new app.AppView({ model: app.Contacts });
+        //new app.AppView();
   });
 
 } (jQuery));

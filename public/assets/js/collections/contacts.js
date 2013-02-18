@@ -9,7 +9,10 @@ var app = app || {};
         console.log('jquery working in collections/contacts.js');
 
         var ContactList = Backbone.Collection.extend({
-			model: app.Contact
+			model: app.Contact,
+
+			url: 'contacts/',
+
 		});
 
 		// instance of collection
