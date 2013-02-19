@@ -28,9 +28,30 @@ var app = app || {};
                 // listen to model events
                 // app.Contacts.bind('add', this.appendItem); // collection event binder
                 // this.listenTo(app.Contacts, 'add', this.appendItem);
-                this.listenTo(app.Contacts, 'add', this.render);
+                this.listenTo(app.Contacts, 'add', this.rerender);
 
                 this.render();
+            },
+
+            rerender: function () {
+                this.clean();
+                //this.stopListening();
+
+                this.listenTo(app.Contacts, 'add', this.rerender);
+
+                this.render();
+                //this.testrender();
+
+                var self = this;
+
+                $('#add-contact-form #submit-btn').click(function() {
+                    self.addContact();
+                });
+
+            },
+
+            testrender: function () {
+                console.log('testrerender called');
             },
 
             render: function () {
@@ -159,6 +180,7 @@ var app = app || {};
                 console.log('cleaning');
                 this.undelegateEvents();
                 $(this.el).empty();
+                this.stopListening();
             },
 
             // appends a new contact after saving, this is triggered by event add
