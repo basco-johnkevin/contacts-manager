@@ -1,12 +1,8 @@
-console.log('javascript working in models/contact.js');
-
 var app = app || {};
 
 (function($) {
 
     $(function() {
-
-        console.log('jquery working in models/contact.js');
 
         app.Contact = Backbone.Model.extend({
 
@@ -16,10 +12,6 @@ var app = app || {};
             },
 
             urlRoot: 'contacts/',
-
-            // initialize: function () {
-            //     this.on('destroy', this.notice, this);
-            // },
 
             // custom urls
             methodUrl:  function(method) {
@@ -49,10 +41,6 @@ var app = app || {};
                 }
 
             },
-
-            // notice: function () {
-            //     alert('dasdasdasdasdasda');
-            // },
 
         });
 

@@ -1,5 +1,3 @@
-console.log('javascript working in main.js');
-
 var app = app || {};
 
 var appView;
@@ -8,15 +6,20 @@ var appView;
 
     $(function() {
 
-        console.log('jquery working in main.js');
+        Backbone.View.prototype.close = function(){
 
-        //var contactList = new app.Contacts();
+	  	    console.log('closing view...');
 
-        //console.log(app.Contacts);
+	  	    if ( this.beforeClose ) {
+	  	    	console.log('calling beforeClose function...');
+			    this.beforeClose();
+			}
 
-        // create instance of master view
-        //new app.AppView({ model: app.Contacts });
-       
+            this.undelegateEvents();
+            $(this.el).empty();
+
+		}
+
         var AppRouter = Backbone.Router.extend({
 
 		    routes: {
@@ -24,29 +27,16 @@ var appView;
 		        "contacts/page/:page"	: "contacts",
 		    },
 
-		    initialize: function () {
-		        console.log(' router working');
-		      	// console.log(app);
-		        // new app.AppView({ model: app.Contacts })
-		    },
-
 		    contacts: function (page) {
-		    	//console.log(this);
-		    	//console.log(app);
-		    	// console.log('current page' + page);
 
 		    	var page = page ? parseInt(page, 10) : 1;
-		    	//console.log(p);
-
-		    	//app.AppView.undelegateEvents();
-
-                //app.AppView.remove();
 
                 // manually clean the view first if it exists before creating a new one,
                 // to avoid events being duplicated since backbone keeps a ghost view.
                 // old views are not automatically destroyed, so we will destroy it manually
+                // by calling close function
                 if (appView) {
-		    		appView.clean();
+		    		appView.close();
 		    	}
                 
 		    	appView = new app.AppView({ model: app.Contacts, page: page });
@@ -54,7 +44,6 @@ var appView;
 		    },
 
 		});
-
 
         router = new AppRouter();
 

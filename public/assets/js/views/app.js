@@ -1,12 +1,8 @@
-console.log('javascript working in views/app.js');
-
 var app = app || {};
 
 (function($) {
 
     $(function() {
-
-        console.log('jquery working in views/app.js');
 
         app.AppView = Backbone.View.extend({
 
@@ -21,26 +17,18 @@ var app = app || {};
             initialize: function () {
                  _.bindAll(this, 'render');
 
-                // console.log(this);
-                // console.log(this.options.page);
-                //console.log('current page number is:' + this.options.page);
-
-                // listen to model events
-                // app.Contacts.bind('add', this.appendItem); // collection event binder
-                // this.listenTo(app.Contacts, 'add', this.appendItem);
-                this.listenTo(app.Contacts, 'add', this.rerender);
+                this.listenTo(app.Contacts, 'add', this.updateView);
 
                 this.render();
             },
 
-            rerender: function () {
-                this.clean();
-                //this.stopListening();
+            updateView: function () {
 
-                this.listenTo(app.Contacts, 'add', this.rerender);
+                this.close()
+
+                this.listenTo(app.Contacts, 'add', this.updateView);
 
                 this.render();
-                //this.testrender();
 
                 var self = this;
 
@@ -48,10 +36,6 @@ var app = app || {};
                     self.addContact();
                 });
 
-            },
-
-            testrender: function () {
-                console.log('testrerender called');
             },
 
             render: function () {
@@ -69,7 +53,7 @@ var app = app || {};
                 // clear the contents if the table
                 $('#contact-list-table').empty();
 
-                console.log(this.model.models.length);
+                // console.log(this.model.models.length);
 
                 // save reference of this app.AppView
                 var self = this;
@@ -81,8 +65,8 @@ var app = app || {};
 
                     success: function (model, response) {
                         // onsole.log('current page number is:' + self.options.page);
-                        //console.log(model.models[0].toJSON());
-                        //console.log(response);   
+                        // console.log(model.models[0].toJSON());
+                        // console.log(response);   
                         // console.log(model.length);
 
                         // console.log(this);
@@ -100,7 +84,6 @@ var app = app || {};
                         var contactsListLength = model.length;
 
                         for (var i = 0; i < contactsListLength; i++) {
-                            // $('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
 
                             var contactView = new app.ContactView({
                                 model: model.models[i]
@@ -123,8 +106,8 @@ var app = app || {};
 
                 });
 
-               var tmpl = _.template(this.template);
-               this.$el.html(tmpl);
+                var tmpl = _.template(this.template);
+                this.$el.html(tmpl);
             },
 
             addContact: function() {
@@ -152,8 +135,8 @@ var app = app || {};
 
                     success: function (model, response) {
                         console.log('saving successful');
-                        console.log(model);
-                        console.log(response);
+                        // console.log(model);
+                        // console.log(response);
 
                         // add in contacts list collection
                         // this.contacts.add(model);
@@ -176,27 +159,9 @@ var app = app || {};
                 return false;
             },
 
-            clean: function () {
-                console.log('cleaning');
-                this.undelegateEvents();
-                $(this.el).empty();
+            beforeClose: function () {
                 this.stopListening();
             },
-
-            // appends a new contact after saving, this is triggered by event add
-            // when a new contact model is added to the contacts collection
-            // appendItem: function (item) {
-            //     console.log('appending a new contact in the contact list');
-            //     // $('body').append('ahaha');
-
-            //     var contactView = new app.ContactView({
-            //         model: item
-            //     });
-
-            //     console.log(contactView.render().el);
-
-            //     $('#contact-list-table').append(contactView.render().el);      
-            // },
 
         });
 
