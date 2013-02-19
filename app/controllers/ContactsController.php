@@ -9,8 +9,21 @@ class ContactsController extends BaseController {
 	 */
 	public function index()
 	{
-		$contacts = Contact::all();
+		$limit = Input::get('perPage');
+		$offset = (Input::get('page') - 1) * $limit;
+
+	 	$contacts = Contact::skip($offset)
+									->take($limit)
+									->get();
+
+		//$contacts = Contact::all();
+
 		return $contacts;
+		// $input = Input::get('perPage');
+		// return $input;
+
+		// $contacts = Contact::all();
+		// return $contacts;
 	}
 
 	/**

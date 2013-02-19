@@ -23,7 +23,7 @@ var app = app || {};
 			},
 
 			notice: function () {
-				alert('a model has been removed');
+				//alert('a model has been removed');
 			},
 
 		});

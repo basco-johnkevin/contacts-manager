@@ -22,10 +22,13 @@ var app = app || {};
                  _.bindAll(this, 'render');
                 // console.log(this);
 
+               // console.log(this.options.page);
+                //console.log('current page number is:' + this.options.page);
+
                 // listen to model events
                 // app.Contacts.bind('add', this.appendItem); // collection event binder
                 // this.listenTo(app.Contacts, 'add', this.appendItem);
-                this.listenTo(app.Contacts, 'add', this.render);
+              //  this.listenTo(app.Contacts, 'add', this.render);
 
                 this.render();
                 // this.renderTodoList();
@@ -33,6 +36,10 @@ var app = app || {};
 
             render: function () {
                 // console.log(this);
+                // var wines = this.model.models;
+                // var len = wines.length;
+                // var startPos = (this.options.page - 1) * 8;
+                // var endPos = Math.min(startPos + 8, len);
 
                 // save the header row and headings row in the table before clearing the contents of the table
                 // we will be using this later
@@ -44,13 +51,29 @@ var app = app || {};
 
                 console.log(this.model.models.length);
 
+                // save reference of this app.AppView
+                var self = this;
+
                 // fetch all the contacts from the server
                 this.model.fetch({
 
+                    data: {page: this.options.page, perPage: 2},
+
                     success: function (model, response) {
+                        // onsole.log('current page number is:' + self.options.page);
                         //console.log(model.models[0].toJSON());
                         //console.log(response);   
                         // console.log(model.length);
+
+                       // console.log(this);
+
+                        // var len = model.length;
+                        // var startPos = (self.options.page - 1) * 3;
+                        // var endPos = Math.min(startPos + 3, len);
+
+
+
+
                        
                         // focus the name field
                         $('#add-contact-form #name').focus();
