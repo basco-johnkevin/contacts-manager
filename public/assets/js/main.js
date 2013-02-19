@@ -2,6 +2,8 @@ console.log('javascript working in main.js');
 
 var app = app || {};
 
+var appView;
+
 (function($) {
 
     $(function() {
@@ -15,8 +17,6 @@ var app = app || {};
         // create instance of master view
         //new app.AppView({ model: app.Contacts });
        
-
-
         var AppRouter = Backbone.Router.extend({
 
 		    routes: {
@@ -38,13 +38,20 @@ var app = app || {};
 		    	var page = page ? parseInt(page, 10) : 1;
 		    	//console.log(p);
 
-		    	new app.AppView({ model: app.Contacts, page: page });
-		    	// new window.app.AppView({ model: app.Contacts });
+		    	//app.AppView.undelegateEvents();
+
+                //app.AppView.remove();
+
+                // manually clean the view first if it exists before creating a new one,
+                // to avoid events being duplicated since backbone keeps a ghost view.
+                // old views are not automatically destroyed, so we will destroy it manually
+                if (appView) {
+		    		appView.clean();
+		    	}
+                
+		    	appView = new app.AppView({ model: app.Contacts, page: page });
+		   
 		    },
-
-
-
-	
 
 		});
 
@@ -55,10 +62,6 @@ var app = app || {};
         // then I should inject it to the router
        	router = new AppRouter(app);
 		Backbone.history.start();
-
-
-
-
 
   	});
 

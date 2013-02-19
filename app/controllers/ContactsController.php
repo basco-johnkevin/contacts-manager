@@ -13,8 +13,9 @@ class ContactsController extends BaseController {
 		$offset = (Input::get('page') - 1) * $limit;
 
 	 	$contacts = Contact::skip($offset)
-									->take($limit)
-									->get();
+							->take($limit)
+							->orderBy('created_at', 'desc')
+							->get();
 
 		//$contacts = Contact::all();
 

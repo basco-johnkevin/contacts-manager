@@ -20,18 +20,17 @@ var app = app || {};
 
             initialize: function () {
                  _.bindAll(this, 'render');
-                // console.log(this);
 
-               // console.log(this.options.page);
+                // console.log(this);
+                // console.log(this.options.page);
                 //console.log('current page number is:' + this.options.page);
 
                 // listen to model events
                 // app.Contacts.bind('add', this.appendItem); // collection event binder
                 // this.listenTo(app.Contacts, 'add', this.appendItem);
-              //  this.listenTo(app.Contacts, 'add', this.render);
+                this.listenTo(app.Contacts, 'add', this.render);
 
                 this.render();
-                // this.renderTodoList();
             },
 
             render: function () {
@@ -65,16 +64,12 @@ var app = app || {};
                         //console.log(response);   
                         // console.log(model.length);
 
-                       // console.log(this);
+                        // console.log(this);
 
                         // var len = model.length;
                         // var startPos = (self.options.page - 1) * 3;
                         // var endPos = Math.min(startPos + 3, len);
 
-
-
-
-                       
                         // focus the name field
                         $('#add-contact-form #name').focus();
 
@@ -158,6 +153,12 @@ var app = app || {};
 
                 // stop form from submitting
                 return false;
+            },
+
+            clean: function () {
+                console.log('cleaning');
+                this.undelegateEvents();
+                $(this.el).empty();
             },
 
             // appends a new contact after saving, this is triggered by event add
