@@ -1,12 +1,8 @@
-console.log('javascript working in views/app.js');
-
 var app = app || {};
 
 (function($) {
 
     $(function() {
-
-        console.log('jquery working in views/app.js');
 
         app.AppView = Backbone.View.extend({
 
@@ -20,19 +16,51 @@ var app = app || {};
 
             initialize: function () {
                  _.bindAll(this, 'render');
-                // console.log(this);
 
-                // listen to model events
-                // app.Contacts.bind('add', this.appendItem); // collection event binder
-                // this.listenTo(app.Contacts, 'add', this.appendItem);
-                this.listenTo(app.Contacts, 'add', this.render);
+                this.views = [];
+
+                this.listenTo(app.Contacts, 'add', this.updateView);     
+                this.listenTo(app.Contacts, 'destroy', this.updateView);
+                
+                this.render();
+            },
+
+            updateView: function () {
+
+                this.close()
+
+                this.listenTo(app.Contacts, 'add', this.updateView);
+                this.listenTo(app.Contacts, 'destroy', this.updateView);
 
                 this.render();
-                // this.renderTodoList();
+
+                var self = this;
+
+                $('#add-contact-form #submit-btn').click(function() {
+                    self.addContact();
+                });
+
+            },
+
+            clearViews: function () {
+
+                // console.log(this.views.length);
+
+                var i = 0;
+                while ( i < this.views.length ) {
+                    // console.log('closing child view in views index' + i);
+                    this.views[i].close();
+                    i++;
+                }
+
             },
 
             render: function () {
                 // console.log(this);
+                // var wines = this.model.models;
+                // var len = wines.length;
+                // var startPos = (this.options.page - 1) * 8;
+                // var endPos = Math.min(startPos + 8, len);
 
                 // save the header row and headings row in the table before clearing the contents of the table
                 // we will be using this later
@@ -42,16 +70,44 @@ var app = app || {};
                 // clear the contents if the table
                 $('#contact-list-table').empty();
 
-                console.log(this.model.models.length);
+                // console.log(this.model.models.length);
+
+                // save reference of this app.AppView
+                var self = this;
+
+                // $.ajaxSetup({
+                //   cache: false,
+                // });
 
                 // fetch all the contacts from the server
                 this.model.fetch({
 
+                    data: {page: this.options.page, perPage: 2, hack: new Date().getTime()},
+
+                    cache: false,
+
+                    //hack: new Date().getTime(),
+
                     success: function (model, response) {
-                        //console.log(model.models[0].toJSON());
-                        //console.log(response);   
+                        // onsole.log('current page number is:' + self.options.page);
+                       // console.log(model.models[0].toJSON());
+
+                        var i = 0;
+
+                        while ( i < model.models.length ) {
+                            console.log(model.models[i].toJSON());
+                            i++;
+                        }
+
+                        // console.log(response);   
                         // console.log(model.length);
-                       
+
+                        // console.log(this);
+
+                        // var len = model.length;
+                        // var startPos = (self.options.page - 1) * 3;
+                        // var endPos = Math.min(startPos + 3, len);
+
                         // focus the name field
                         $('#add-contact-form #name').focus();
 
@@ -61,15 +117,20 @@ var app = app || {};
                         var contactsListLength = model.length;
 
                         for (var i = 0; i < contactsListLength; i++) {
-                            // $('.thumbnails', this.el).append(new WineListItemView({model: wines[i]}).render().el);
 
                             var contactView = new app.ContactView({
                                 model: model.models[i]
                             });
 
+                            self.views.push(contactView);
+
                             $('#contact-list-table').append(contactView.render().el);  
 
                         }
+
+                        //console.log(self.views);
+
+
 
                         //console.log(contactView.render());
                         // console.log(contactView.render().el);
@@ -84,8 +145,8 @@ var app = app || {};
 
                 });
 
-               var tmpl = _.template(this.template);
-               this.$el.html(tmpl);
+                var tmpl = _.template(this.template);
+                this.$el.html(tmpl);
             },
 
             addContact: function() {
@@ -113,8 +174,8 @@ var app = app || {};
 
                     success: function (model, response) {
                         console.log('saving successful');
-                        console.log(model);
-                        console.log(response);
+                        // console.log(model);
+                        // console.log(response);
 
                         // add in contacts list collection
                         // this.contacts.add(model);
@@ -137,20 +198,12 @@ var app = app || {};
                 return false;
             },
 
-            // appends a new contact after saving, this is triggered by event add
-            // when a new contact model is added to the contacts collection
-            // appendItem: function (item) {
-            //     console.log('appending a new contact in the contact list');
-            //     // $('body').append('ahaha');
+            beforeClose: function () {
 
-            //     var contactView = new app.ContactView({
-            //         model: item
-            //     });
+                this.clearViews();
 
-            //     console.log(contactView.render().el);
-
-            //     $('#contact-list-table').append(contactView.render().el);      
-            // },
+                this.stopListening();
+            },
 
         });
 

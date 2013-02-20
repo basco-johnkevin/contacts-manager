@@ -2,6 +2,13 @@
 
 class ContactsController extends BaseController {
 
+	protected $headers = array(
+		'Access-Control-Allow-Origin' => '*',
+		"Pragma" => "no-cache, must-revalidate",
+		"Cache-Control" => "no-cache",
+		"Expires" => "Sat, 26 Jul 1997 05:00:00 GMT",
+	);
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,8 +16,18 @@ class ContactsController extends BaseController {
 	 */
 	public function index()
 	{
-		$contacts = Contact::all();
-		return $contacts;
+		$limit = Input::get('perPage');
+		$offset = (Input::get('page') - 1) * $limit;
+
+	 	$contacts = Contact::skip($offset)
+							->take($limit)
+							->orderBy('created_at', 'desc')
+							->get();
+
+		$this->headers['Last-Modified'] = gmdate("D, d M Y H:i:s") . " GMT";
+
+		return $response = Response::make($contacts, 200, $this->headers);
+
 	}
 
 	/**

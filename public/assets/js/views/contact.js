@@ -26,7 +26,7 @@ $(function( $ ) {
         },
 
         deleteContact: function () {
-            console.log('deleting a contact');
+            //console.log('deleting a contact');
 
             // save the reference of this (the current contact view) to variable self
             // since we will use it inside callbacks
@@ -37,19 +37,32 @@ $(function( $ ) {
 
                 success: function (model, response) {
 
-                    console.log(response);
+                    // console.log(response);
 
                     if (response.failed === 'true') {
                         console.log('failed deleting the contact record in the database');
                     } else {
-                        console.log(this);
-                        console.log(self);
+                       // console.log(this);
+                       // console.log(self);
+
+                        self.remove(); 
+
+                        self.close();
 
                         // remove in the collection
                         app.Contacts.remove(model);
 
+                       
+
                         // remove this view/item from the DOM
-                        self.remove(); 
+ 
+
+                       //  Backbone.history.loadUrl(Backbone.history.fragment);
+
+                        //vself.navigate("contacts", {trigger: true, replace: true});
+
+                        // window.history.back();
+
                     }
 
                 },
@@ -62,6 +75,11 @@ $(function( $ ) {
 
             
         },
+
+        beforeClose: function () {
+            this.stopListening();
+        },
+
 
     });
 
