@@ -17,8 +17,11 @@ var app = app || {};
             initialize: function () {
                  _.bindAll(this, 'render');
 
-                this.listenTo(app.Contacts, 'add', this.updateView);
+                this.views = [];
 
+                this.listenTo(app.Contacts, 'add', this.updateView);     
+                this.listenTo(app.Contacts, 'destroy', this.updateView);
+                
                 this.render();
             },
 
@@ -27,6 +30,7 @@ var app = app || {};
                 this.close()
 
                 this.listenTo(app.Contacts, 'add', this.updateView);
+                this.listenTo(app.Contacts, 'destroy', this.updateView);
 
                 this.render();
 
@@ -35,6 +39,19 @@ var app = app || {};
                 $('#add-contact-form #submit-btn').click(function() {
                     self.addContact();
                 });
+
+            },
+
+            clearViews: function () {
+
+                // console.log(this.views.length);
+
+                var i = 0;
+                while ( i < this.views.length ) {
+                    // console.log('closing child view in views index' + i);
+                    this.views[i].close();
+                    i++;
+                }
 
             },
 
@@ -58,14 +75,30 @@ var app = app || {};
                 // save reference of this app.AppView
                 var self = this;
 
+                // $.ajaxSetup({
+                //   cache: false,
+                // });
+
                 // fetch all the contacts from the server
                 this.model.fetch({
 
-                    data: {page: this.options.page, perPage: 2},
+                    data: {page: this.options.page, perPage: 2, hack: new Date().getTime()},
+
+                    cache: false,
+
+                    //hack: new Date().getTime(),
 
                     success: function (model, response) {
                         // onsole.log('current page number is:' + self.options.page);
-                        // console.log(model.models[0].toJSON());
+                       // console.log(model.models[0].toJSON());
+
+                        var i = 0;
+
+                        while ( i < model.models.length ) {
+                            console.log(model.models[i].toJSON());
+                            i++;
+                        }
+
                         // console.log(response);   
                         // console.log(model.length);
 
@@ -89,9 +122,15 @@ var app = app || {};
                                 model: model.models[i]
                             });
 
+                            self.views.push(contactView);
+
                             $('#contact-list-table').append(contactView.render().el);  
 
                         }
+
+                        //console.log(self.views);
+
+
 
                         //console.log(contactView.render());
                         // console.log(contactView.render().el);
@@ -160,6 +199,9 @@ var app = app || {};
             },
 
             beforeClose: function () {
+
+                this.clearViews();
+
                 this.stopListening();
             },
 

@@ -8,10 +8,10 @@ var appView;
 
         Backbone.View.prototype.close = function(){
 
-	  	    console.log('closing view...');
+	  	   // console.log('closing view...');
 
 	  	    if ( this.beforeClose ) {
-	  	    	console.log('calling beforeClose function...');
+	  	    	// console.log('calling beforeClose function...');
 			    this.beforeClose();
 			}
 
@@ -36,9 +36,13 @@ var appView;
                 // old views are not automatically destroyed, so we will destroy it manually
                 // by calling close function
                 if (appView) {
-		    		appView.close();
+		    		 appView.close();
+		    		//$('appView.el').empty();
+		    		//appView.remove();
 		    	}
                 
+                console.log(appView);
+
 		    	appView = new app.AppView({ model: app.Contacts, page: page });
 		   
 		    },
