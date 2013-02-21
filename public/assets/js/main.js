@@ -1,60 +1,61 @@
-var app = app || {};
-
-var appView;
+var App = App || {};
 
 (function($) {
 
     $(function() {
 
-        Backbone.View.prototype.close = function(){
+    	// add close function to all views
+    	Backbone.View.prototype.close = function(){
 
-	  	   // console.log('closing view...');
+		  	this.remove();
+		  	this.unbind();
 
-	  	    if ( this.beforeClose ) {
-	  	    	// console.log('calling beforeClose function...');
-			    this.beforeClose();
+		  	if (this.onClose){
+			    this.onClose();
 			}
-
-            this.undelegateEvents();
-            $(this.el).empty();
 
 		}
 
-        var AppRouter = Backbone.Router.extend({
+		// main router
+        App.Router = Backbone.Router.extend({
 
 		    routes: {
 		        "" : "contacts",
-		        "contacts/page/:page"	: "contacts",
+		        "test" : "contacts",
 		    },
 
-		    contacts: function (page) {
+		    contacts: function () {
 
-		    	var page = page ? parseInt(page, 10) : 1;
+		    	var contacts = new App.Contacts();
 
-                // manually clean the view first if it exists before creating a new one,
-                // to avoid events being duplicated since backbone keeps a ghost view.
-                // old views are not automatically destroyed, so we will destroy it manually
-                // by calling close function
-                if (appView) {
-		    		 appView.close();
-		    		//$('appView.el').empty();
-		    		//appView.remove();
-		    	}
-                
-                console.log(appView);
+		  		var appView = new App.AppView({ collection: contacts });
+		  		
+		  		this.showView(appView);
 
-		    	appView = new app.AppView({ model: app.Contacts, page: page });
-		   
+		  		// $('#add-contact-form-con').html(app.MainView.render().$el);
+
 		    },
 
+		    // handles showing views and disposal
+		    showView: function (view) {
+
+			    if (this.currentView) {
+				    this.currentView.close();
+				}
+				 
+		    	this.currentView = view;
+			    this.currentView.render();
+			 
+			    $("#main-content").html(this.currentView.el);
+
+			},
+ 
 		});
 
-        router = new AppRouter();
-
-        // since I tied the views, models and collections in the variable app,
-        // then I should inject it to the router
-       	router = new AppRouter(app);
+       	App.router = new App.Router();
 		Backbone.history.start();
+
+		console.log(window.App.router);
 
   	});
 

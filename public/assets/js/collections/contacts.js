@@ -1,20 +1,16 @@
-var app = app || {};
+var App = App || {};
 
 (function($) {
 
     $(function() {
 
-        var ContactList = Backbone.Collection.extend({
+        	App.Contacts = Backbone.Collection.extend({
         	
-			model: app.Contact,
+			model: App.Contact,
 
 			url: 'contacts/',
 
 		});
-
-		// instance of collection
-        app.Contacts = new ContactList();
-
   });
 
 } (jQuery));

@@ -16,15 +16,17 @@ class ContactsController extends BaseController {
 	 */
 	public function index()
 	{
-		$limit = Input::get('perPage');
-		$offset = (Input::get('page') - 1) * $limit;
+		// $limit = Input::get('perPage');
+		// $offset = (Input::get('page') - 1) * $limit;
 
-	 	$contacts = Contact::skip($offset)
-							->take($limit)
-							->orderBy('created_at', 'desc')
-							->get();
+	 // 	$contacts = Contact::skip($offset)
+		// 					->take($limit)
+		// 					->orderBy('created_at', 'desc')
+		// 					->get();
 
-		$this->headers['Last-Modified'] = gmdate("D, d M Y H:i:s") . " GMT";
+		// $this->headers['Last-Modified'] = gmdate("D, d M Y H:i:s") . " GMT";
+
+		$contacts = Contact::all();
 
 		return $response = Response::make($contacts, 200, $this->headers);
 
