@@ -1,10 +1,10 @@
-var App = App || {};
+var app = app || {};
 
 (function($) {
 
     $(function() {
 
-        App.Contact = Backbone.Model.extend({
+        app.Contact = Backbone.Model.extend({
 
             defaults: {
                 name: '',
@@ -34,13 +34,13 @@ var App = App || {};
                 Backbone.sync(method, model, options);
             },
 
-            // validate: function (attrs, options) {
-            //     // validate data here
-            //     if (attrs.name === '' || attrs.email === '') {
-            //         return "name or email cant be empty";
-            //     }
+            validate: function (attrs, options) {
+                // validate data here
+                if (attrs.name === '' || attrs.email === '') {
+                    return "name or email cant be empty";
+                }
 
-            // },
+            },
 
         });
 

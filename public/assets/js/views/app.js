@@ -1,212 +1,154 @@
-var app = app || {};
+var App = App || {};
 
 (function($) {
 
     $(function() {
 
-        app.AppView = Backbone.View.extend({
+        App.AppView = Backbone.View.extend({
 
-            el: '#add-contact-form-con',
+            id: 'home',
 
-            template: $("#add_contact_form").html(),
+            template: $("#home-template").html(),
 
             events: {
-                'click #add-contact-form #submit-btn': 'addContact',
+                "click #submit-btn" : "addContact",
             },
 
             initialize: function () {
-                 _.bindAll(this, 'render');
+                 _.bindAll(this, 'render', 'addContact');
 
-                this.views = [];
+                this.listenTo(this.collection, 'add', this.updateContactList);
+                this.listenTo(this.collection, 'destroy', this.test);
 
-                this.listenTo(app.Contacts, 'add', this.updateView);     
-                this.listenTo(app.Contacts, 'destroy', this.updateView);
-                
-                this.render();
+                this.subViews = [];
             },
 
-            updateView: function () {
-
-                this.close()
-
-                this.listenTo(app.Contacts, 'add', this.updateView);
-                this.listenTo(app.Contacts, 'destroy', this.updateView);
-
-                this.render();
-
-                var self = this;
-
-                $('#add-contact-form #submit-btn').click(function() {
-                    self.addContact();
-                });
-
-            },
-
-            clearViews: function () {
-
-                // console.log(this.views.length);
-
-                var i = 0;
-                while ( i < this.views.length ) {
-                    // console.log('closing child view in views index' + i);
-                    this.views[i].close();
-                    i++;
-                }
-
+            test: function () {
+                console.log('test');
+                console.log('length of collection' + this.collection.length);
+                this.updateContactList();
+                // this.collection.remove()
             },
 
             render: function () {
-                // console.log(this);
-                // var wines = this.model.models;
-                // var len = wines.length;
-                // var startPos = (this.options.page - 1) * 8;
-                // var endPos = Math.min(startPos + 8, len);
+                var template = _.template(this.template);
+                this.$el.append(template);
 
-                // save the header row and headings row in the table before clearing the contents of the table
-                // we will be using this later
-                var contactListTableHeaderRow = $('#contact-list-table #contact-list-table-header-row').detach();
-                var contactListTableHeadingsRow = $('#contact-list-table #contact-list-table-headings-row').detach();
-
-                // clear the contents if the table
-                $('#contact-list-table').empty();
-
-                // console.log(this.model.models.length);
-
-                // save reference of this app.AppView
                 var self = this;
 
-                // $.ajaxSetup({
-                //   cache: false,
-                // });
+                this.collection.fetch({
 
-                // fetch all the contacts from the server
-                this.model.fetch({
-
-                    data: {page: this.options.page, perPage: 2, hack: new Date().getTime()},
-
-                    cache: false,
-
-                    //hack: new Date().getTime(),
+                    wait: true,
 
                     success: function (model, response) {
-                        // onsole.log('current page number is:' + self.options.page);
-                       // console.log(model.models[0].toJSON());
 
-                        var i = 0;
+                        // show each result in the console for debugging
+                        // var i = 0;
+                        // while ( i < model.models.length ) {
+                        //     console.log(model.models[i].toJSON());
+                        //     i++;
+                        // }
 
-                        while ( i < model.models.length ) {
-                            console.log(model.models[i].toJSON());
-                            i++;
-                        }
+                        var ContactsLen = model.length;
 
-                        // console.log(response);   
-                        // console.log(model.length);
+                        for (var i = 0; i < ContactsLen; i++) {
 
-                        // console.log(this);
-
-                        // var len = model.length;
-                        // var startPos = (self.options.page - 1) * 3;
-                        // var endPos = Math.min(startPos + 3, len);
-
-                        // focus the name field
-                        $('#add-contact-form #name').focus();
-
-                        $('#contact-list-table').append(contactListTableHeaderRow);
-                        $('#contact-list-table').append(contactListTableHeadingsRow);
-
-                        var contactsListLength = model.length;
-
-                        for (var i = 0; i < contactsListLength; i++) {
-
-                            var contactView = new app.ContactView({
+                            var contactView = new App.ContactView({
                                 model: model.models[i]
                             });
 
-                            self.views.push(contactView);
+                            self.subViews.push(contactView);
 
-                            $('#contact-list-table').append(contactView.render().el);  
+                            $('#contact-list-table', this.el).append(contactView.render().el);  
 
                         }
-
-                        //console.log(self.views);
-
-
-
-                        //console.log(contactView.render());
-                        // console.log(contactView.render().el);
-                        // $('#contact-list-table').append(contactView.render().el);   
-                        // $('#contact-list-table').append(contactView.render().el);
-
                     },
 
-                    error: function () {
-                        console.log('failed fetching the contacts from the server');
-                    },
+                }); 
 
-                });
-
-                var tmpl = _.template(this.template);
-                this.$el.html(tmpl);
+                return this;
             },
 
-            addContact: function() {
-                console.log('adding a new contact');
+            onClose: function () {
+                console.log('closing App.AppView...');
+                this.stopListening();
+            },
 
-                // disable submit button
-                $('#add-contact-form #submit-btn').attr("disabled", "disabled");
+            addContact: function () {
+                // console.log('add contact');
 
-                var contact = new app.Contact();
+                var self = this;
+
+                var contact = new App.Contact();
 
                 var contactDetails = {
-                    name: $('#add-contact-form #name').val(),
-                    email: $('#add-contact-form #email').val()
+                    name: $('#add-contact-form-con form #name').val(),
+                    email: $('#add-contact-form-con form #email').val()
                 };
-
-                // this will throw validation errors and stop saving of the new contact
-                contact.on("invalid", function(model, error) {
-                    alert(error);
-
-                    // enable submit button
-                    $('#add-contact-form #submit-btn').removeAttr("disabled");
-                });
 
                 contact.save(contactDetails, {
 
                     success: function (model, response) {
                         console.log('saving successful');
-                        // console.log(model);
-                        // console.log(response);
-
-                        // add in contacts list collection
-                        // this.contacts.add(model);
-                        app.Contacts.add(model);
-
-                        // clear input fields
-                        $('#add-contact-form #name').val('');
-                        $('#add-contact-form #email').val('');
-
-                        // enable submit button
-                        $('#add-contact-form #submit-btn').removeAttr("disabled");
+             
+                        self.collection.add(model);
+                        // console.log('length of collection' + self.collection.length);
                     },
 
-                    error: function (model, response) {
-                        console.log('saving error!');
-                    },
-                });
+                });     
 
-                // stop form from submitting
                 return false;
             },
 
-            beforeClose: function () {
+            updateContactList: function () {
 
-                this.clearViews();
+                var self = this;
 
-                this.stopListening();
+                // close sub views
+                var i = 0;
+                while ( i < this.subViews.length ) {
+                    console.log('closing sub views of App.AppView');
+                    this.subViews[i].close();
+                    i++;
+                }
+
+                // update contact list view w/ updating collection data from the server
+                this.collection.fetch({
+
+                    success: function (model, response) {
+
+                        var ContactsLen = model.length;
+
+                        for (var i = 0; i < ContactsLen; i++) {
+
+                            var contactView = new App.ContactView({
+                                model: model.models[i]
+                            });
+
+                            self.subViews.push(contactView);
+
+                            $('#contact-list-table', this.el).append(contactView.render().el);  
+
+                        }
+                    },
+
+                }); 
+
+                // update contact list view w/o updating collection data from the server
+                // for (var i = 0; i < this.collection.models.length; i++) {
+                //     var contactView = new App.ContactView({
+                //         model: this.collection.models[i]
+                //     });
+
+                //     this.subViews.push(contactView);
+
+                //     $('#contact-list-table', this.el).append(contactView.render().el);  
+                // }
+
             },
 
         });
 
-  });
+    });
 
-} (jQuery));
+}(jQuery));

@@ -1,86 +1,63 @@
-var app = app || {};
+var App = App || {};
 
-$(function( $ ) {
-    'use strict';
+(function($) {
 
-    app.ContactView = Backbone.View.extend({
-         
-        tagName: 'tr', // name of (orphan) root tag in this.el
+    $(function() {
 
-        template: _.template( $('#contact-template').html() ),
+        'use strict';
 
-        // Delegated events for creating new items, and clearing completed ones.
-        events: {
-            'click .delete-btn': 'deleteContact',
-        },
+        App.ContactView = Backbone.View.extend({
+             
+            tagName: 'tr', // name of (orphan) root tag in this.el
 
-        initialize: function(){
-            _.bindAll(this, 'render'); // every function that uses 'this' as the current object should be in here
-            
-        },
+            template: _.template( $('#contact-template').html() ),
 
-        render: function(){
-            // $(this.el).html('<span>' + this.model.get('name') + '</span>');
-            this.$el.html( this.template( this.model.toJSON() ) );
-            return this; // for chainable calls, like .render().el
-        },
+            events: {
+                "click .delete-btn" : "deleteContact",
+            },
 
-        deleteContact: function () {
-            //console.log('deleting a contact');
+            initialize: function () {
+                _.bindAll(this, 'render'); // every function that uses 'this' as the current object should be in here
+                
+            },
 
-            // save the reference of this (the current contact view) to variable self
-            // since we will use it inside callbacks
-            var self = this;
+            render: function () {
+                this.$el.html( this.template( this.model.toJSON() ) );
+                return this; // for chainable calls, like .render().el
+            },
 
-            // delete the contact record in the database
-            this.model.destroy({
+            onClose: function () {
+                console.log('closing App.ContactView...');
+                this.stopListening();
+            },
 
-                success: function (model, response) {
+            deleteContact: function () {
+                console.log('deleting contact...');
 
-                    // console.log(response);
+                var self = this;
 
-                    if (response.failed === 'true') {
-                        console.log('failed deleting the contact record in the database');
-                    } else {
-                       // console.log(this);
-                       // console.log(self);
+                // delete the contact record in the database
+                this.model.destroy({
 
-                        self.remove(); 
+                    wait: true,
 
-                        self.close();
+                    success: function (model, response) {
+                        if (response.failed === 'true') {
+                            console.log('failed deleting the contact record in the database');
+                        } else {
+                            // window.App.router.currentView.collection.remove(model);
+                            // console.log(window.App.router.currentView.collection);
+                            self.close();
+                        }
+                    },
 
-                        // remove in the collection
-                        app.Contacts.remove(model);
+                });
 
-                       
+                return false;
+            },
 
-                        // remove this view/item from the DOM
- 
-
-                       //  Backbone.history.loadUrl(Backbone.history.fragment);
-
-                        //vself.navigate("contacts", {trigger: true, replace: true});
-
-                        // window.history.back();
-
-                    }
-
-                },
-
-                error: function () {
-                    console.log('failed deleting the contact record. Please contact administrator');
-                },
-
-            });
-
-            
-        },
-
-        beforeClose: function () {
-            this.stopListening();
-        },
-
+        });
 
     });
 
-});
+}(jQuery));
