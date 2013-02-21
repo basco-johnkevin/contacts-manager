@@ -8,7 +8,7 @@ var App = App || {};
         	
 			model: App.Contact,
 
-			url: 'contacts/',
+			url: 'contacts/'
 
 		});
   });

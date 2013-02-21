@@ -11,7 +11,7 @@ var App = App || {};
             template: $("#home-template").html(),
 
             events: {
-                "click #submit-btn" : "addContact",
+                "click #submit-btn" : "addContact"
             },
 
             initialize: function () {
@@ -62,7 +62,7 @@ var App = App || {};
                             $('#contact-list-table', this.el).append(contactView.render().el);  
 
                         }
-                    },
+                    }
 
                 }); 
 
@@ -93,7 +93,7 @@ var App = App || {};
              
                         self.collection.add(model);
                         // console.log('length of collection' + self.collection.length);
-                    },
+                    }
 
                 });     
 
@@ -130,7 +130,7 @@ var App = App || {};
                             $('#contact-list-table', this.el).append(contactView.render().el);  
 
                         }
-                    },
+                    }
 
                 }); 
 
@@ -145,7 +145,7 @@ var App = App || {};
                 //     $('#contact-list-table', this.el).append(contactView.render().el);  
                 // }
 
-            },
+            }
 
         });
 

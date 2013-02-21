@@ -13,7 +13,7 @@ var App = App || {};
             template: _.template( $('#contact-template').html() ),
 
             events: {
-                "click .delete-btn" : "deleteContact",
+                "click .delete-btn" : "deleteContact"
             },
 
             initialize: function () {
@@ -49,12 +49,12 @@ var App = App || {};
                             // console.log(window.App.router.currentView.collection);
                             self.close();
                         }
-                    },
+                    }
 
                 });
 
                 return false;
-            },
+            }
 
         });
 

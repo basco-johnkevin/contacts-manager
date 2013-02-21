@@ -21,7 +21,7 @@ var App = App || {};
 
 		    routes: {
 		        "" : "contacts",
-		        "test" : "contacts",
+		        "test" : "contacts"
 		    },
 
 		    contacts: function () {
@@ -48,7 +48,7 @@ var App = App || {};
 			 
 			    $("#main-content").html(this.currentView.el);
 
-			},
+			}
  
 		});
 

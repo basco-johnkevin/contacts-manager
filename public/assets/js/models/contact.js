@@ -32,7 +32,7 @@ var App = App || {};
                     options.url = model.methodUrl(method.toLowerCase());
                 }
                 Backbone.sync(method, model, options);
-            },
+            }
 
             // validate: function (attrs, options) {
             //     // validate data here

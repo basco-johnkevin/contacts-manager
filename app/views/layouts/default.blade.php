@@ -30,6 +30,7 @@
 
 	<!-- scripts -->
 	<script type="text/javascript" src="{{ asset('assets/js/libs/jquery/1.9.0/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/libs/json2.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/libs/underscore/1.4.4/underscore.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/libs/backbone/0.9.10/backbone.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('packages/bootstrap/js/bootstrap.js') }}"></script>
