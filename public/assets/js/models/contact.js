@@ -18,7 +18,7 @@ var App = App || {};
                 if(method == "delete") {
                     return "contacts/" + this.attributes.id;
                 } else if (method == "update") {
-                    return "http://www.api.com/mymodel/" + this.attributes.id+"/update";
+                    return "contacts/" + this.attributes.id;
                 } else if (method == "create") {
                     return "contacts/";
                 } 

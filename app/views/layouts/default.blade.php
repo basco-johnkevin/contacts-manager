@@ -33,6 +33,7 @@
 	<script type="text/javascript" src="{{ asset('assets/js/libs/json2.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/libs/underscore/1.4.4/underscore.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/libs/backbone/0.9.10/backbone.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/libs/jeditable.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('packages/bootstrap/js/bootstrap.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/models/contact.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/collections/contacts.js') }}"></script>

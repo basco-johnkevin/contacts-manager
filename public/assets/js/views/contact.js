@@ -18,11 +18,64 @@ var App = App || {};
 
             initialize: function () {
                 _.bindAll(this, 'render'); // every function that uses 'this' as the current object should be in here
-                
+                    
             },
 
+
             render: function () {
+
+                var self = this;
+
                 this.$el.html( this.template( this.model.toJSON() ) );
+
+                // bind editable to the name column
+                this.$el.find('.name-edit').editable(function(value, settings) { 
+                    
+                    self.model.save({ name: value, field: 'name' }, {
+
+                    wait: true,
+
+                    success: function (model, response) {
+                        console.log('update successful');
+             
+                    }
+
+                });     
+
+                    return(value);
+
+                }, { 
+                        cssclass : 'editable'
+                        // type    : 'textarea',
+                        // submit  : 'OK',
+                });
+
+                // bind editable to the email column
+                this.$el.find('.email-edit').editable(function(value, settings) { 
+                    
+                    self.model.save({ email: value, field: 'email' }, {
+
+                    
+                   
+                    wait: true,
+
+                    url: 'tesdasdasdasdsat',
+
+                    success: function (model, response) {
+                        console.log('update successful');
+             
+                    }
+
+                });     
+
+                    return(value);
+
+                }, { 
+                        cssclass : 'editable'
+                        // type    : 'textarea',
+                        // submit  : 'OK',
+                });
+
                 return this; // for chainable calls, like .render().el
             },
 

@@ -19,6 +19,7 @@ var App = App || {};
 
                 this.listenTo(this.collection, 'add', this.updateContactList);
                 this.listenTo(this.collection, 'destroy', this.test);
+                this.listenTo(this.collection, 'change', this.updateContactList);
 
                 this.subViews = [];
             },

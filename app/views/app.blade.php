@@ -1,6 +1,6 @@
 <script type="text/template" id="contact-template">
-	<td><%- name %></td>
-	<td><%- email %></td>
+	<td class="name-edit"><%- name %></td>
+	<td class="email-edit"><%- email %></td>
 	<td><a href="#" id="contact-<%- id %>" class="delete-btn">Delete</a></td>
 </script>
 

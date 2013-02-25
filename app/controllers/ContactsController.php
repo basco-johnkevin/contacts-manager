@@ -77,7 +77,7 @@ class ContactsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 	/**
@@ -87,7 +87,18 @@ class ContactsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::json();
+		$contact = Contact::find($id);
+
+		if ($input->field === 'name') {
+			$contact->name = $input->name;
+		} else {
+			$contact->email = $input->email;
+		}
+
+		$contact->save();
+
+		return $id;
 	}
 
 	/**
