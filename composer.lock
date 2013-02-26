@@ -46,12 +46,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d18a37a32c7c776a48d38e738c3b99ab54b16a8b"
+                "reference": "b6a042faa1979a80dd5b2a3aabb37a878588200c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d18a37a32c7c776a48d38e738c3b99ab54b16a8b",
-                "reference": "d18a37a32c7c776a48d38e738c3b99ab54b16a8b",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b6a042faa1979a80dd5b2a3aabb37a878588200c",
+                "reference": "b6a042faa1979a80dd5b2a3aabb37a878588200c",
                 "shasum": ""
             },
             "require": {
@@ -105,7 +105,7 @@
                 "mockery/mockery": "0.7.2",
                 "aws/aws-sdk-php": "2.1.*"
             },
-            "time": "2013-02-16 19:55:08",
+            "time": "2013-02-26 22:44:54",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -145,12 +145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "5cc24b8a77bd93c286c3d09264385f473b344c24"
+                "reference": "bac68ea04775a33c2da668de646ad9827dc4c380"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/5cc24b8a77bd93c286c3d09264385f473b344c24",
-                "reference": "5cc24b8a77bd93c286c3d09264385f473b344c24",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/bac68ea04775a33c2da668de646ad9827dc4c380",
+                "reference": "bac68ea04775a33c2da668de646ad9827dc4c380",
                 "shasum": ""
             },
             "require": {
@@ -159,7 +159,7 @@
             "require-dev": {
                 "hamcrest/hamcrest": "1.1.0"
             },
-            "time": "2013-02-16 19:44:47",
+            "time": "2013-02-17 12:15:28",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -391,13 +391,13 @@
             "target-dir": "Symfony/Component/BrowserKit",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/BrowserKit",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/BrowserKit.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -411,7 +411,7 @@
             "suggest": {
                 "symfony/process": "2.2.*"
             },
-            "time": "2013-02-08 16:10:53",
+            "time": "2013-02-23 06:46:07",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -446,13 +446,13 @@
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Console",
-                "reference": "v2.2.0-RC1"
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.2.0-RC1",
-                "reference": "v2.2.0-RC1",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -493,13 +493,13 @@
             "target-dir": "Symfony/Component/CssSelector",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/CssSelector",
-                "reference": "v2.2.0-BETA2"
+                "url": "https://github.com/symfony/CssSelector.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/v2.2.0-BETA2",
-                "reference": "v2.2.0-BETA2",
+                "url": "https://api.github.com/repos/symfony/CssSelector/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -540,13 +540,13 @@
             "target-dir": "Symfony/Component/DomCrawler",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/DomCrawler",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/DomCrawler.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +558,7 @@
             "suggest": {
                 "symfony/css-selector": "2.2.*"
             },
-            "time": "2013-02-08 16:10:52",
+            "time": "2013-02-23 06:46:07",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -593,13 +593,13 @@
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/EventDispatcher",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/EventDispatcher.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -647,13 +647,13 @@
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Finder",
-                "reference": "v2.2.0-RC1"
+                "url": "https://github.com/symfony/Finder.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/v2.2.0-RC1",
-                "reference": "v2.2.0-RC1",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -694,19 +694,19 @@
             "target-dir": "Symfony/Component/HttpFoundation",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/HttpFoundation",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/HttpFoundation.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-02-11 12:46:49",
+            "time": "2013-02-23 06:46:07",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -744,13 +744,13 @@
             "target-dir": "Symfony/Component/HttpKernel",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/HttpKernel",
-                "reference": "cec254f40ea9baaa2b90de7ca6de236de76823eb"
+                "url": "https://github.com/symfony/HttpKernel.git",
+                "reference": "dbdaeb9c849a5eadc552cb0b8c61cfc72d1d8b4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/cec254f40ea9baaa2b90de7ca6de236de76823eb",
-                "reference": "cec254f40ea9baaa2b90de7ca6de236de76823eb",
+                "url": "https://api.github.com/repos/symfony/HttpKernel/zipball/dbdaeb9c849a5eadc552cb0b8c61cfc72d1d8b4c",
+                "reference": "dbdaeb9c849a5eadc552cb0b8c61cfc72d1d8b4c",
                 "shasum": ""
             },
             "require": {
@@ -778,7 +778,7 @@
                 "symfony/dependency-injection": "2.2.*",
                 "symfony/finder": "2.2.*"
             },
-            "time": "2013-02-13 01:35:51",
+            "time": "2013-02-25 17:19:31",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -813,19 +813,19 @@
             "target-dir": "Symfony/Component/Process",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Process",
-                "reference": "v2.2.0-RC1"
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/v2.2.0-RC1",
-                "reference": "v2.2.0-RC1",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-01-31 18:27:04",
+            "time": "2013-02-18 21:28:10",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -860,13 +860,13 @@
             "target-dir": "Symfony/Component/Routing",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Routing",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/Routing.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Routing/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/Routing/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
@@ -918,13 +918,13 @@
             "target-dir": "Symfony/Component/Translation",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Translation",
-                "reference": "v2.2.0-RC2"
+                "url": "https://github.com/symfony/Translation.git",
+                "reference": "v2.2.0-RC3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/v2.2.0-RC2",
-                "reference": "v2.2.0-RC2",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
                 "shasum": ""
             },
             "require": {
