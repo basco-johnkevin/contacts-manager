@@ -49,11 +49,11 @@ class ContactsController extends BaseController {
 	 */
 	public function store()
 	{
-		$input = Input::json();
+		$data = Input::json();
 
 		$contact = Contact::create(array(
-						'name' => $input->name,
-						'email' => $input->email,
+						'name' => $data['name'],
+						'email' => $data['email']
 				   ));
 
 
