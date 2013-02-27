@@ -32,15 +32,22 @@ var App = App || {};
                     options.url = model.methodUrl(method.toLowerCase());
                 }
                 Backbone.sync(method, model, options);
+            },
+
+            validate: function (attrs, options) {
+                // validate name and email is not empty
+                if (attrs.name === '' || attrs.email === '') {
+                    return 'name and email can\'t be empty';
+                }
+
+                // validate if email is a valid email
+                var filter = /^[a-zA-Z0-9]+[a-zA-Z0-9_.-]+[a-zA-Z0-9_-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-z]{2,4}$/;
+                // if it's valid email
+                if( ! filter.test(attrs.email)){
+                    return 'invalid email';
+                }
+
             }
-
-            // validate: function (attrs, options) {
-            //     // validate data here
-            //     if (attrs.name === '' || attrs.email === '') {
-            //         return "name or email cant be empty";
-            //     }
-
-            // },
 
         });
 

@@ -78,6 +78,9 @@ var App = App || {};
             addContact: function () {
                 // console.log('add contact');
 
+                // clear error message
+                $('#add-contact-form-con .error').html('');
+
                 var self = this;
 
                 var contact = new App.Contact();
@@ -87,7 +90,16 @@ var App = App || {};
                     email: $('#add-contact-form-con form #email').val()
                 };
 
+                contact.on("invalid", function(model, error) {
+                    
+                    // show error message
+                    $('#add-contact-form-con .error').html(error);
+
+                });
+
                 contact.save(contactDetails, {
+
+                    wait: true,
 
                     success: function (model, response) {
                         console.log('saving successful');

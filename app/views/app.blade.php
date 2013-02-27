@@ -18,6 +18,7 @@
 			<div id="add-contact-form-con">
 				<form>
 					<h3>Add a new contact</h3>
+					<p class="error"></p>
 					<input type="text" name="name" id="name" placeholder="name">
 					<input type="text" name="email" id="email" placeholder="email">
 					<input type="submit" id="submit-btn" class="btn btn-primary">

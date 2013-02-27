@@ -45,9 +45,8 @@ var App = App || {};
                     return(value);
 
                 }, { 
-                        cssclass : 'editable'
-                        // type    : 'textarea',
-                        // submit  : 'OK',
+                        cssclass : 'editable',
+                        placeholder : ''
                 });
 
                 // bind editable to the email column
@@ -71,9 +70,8 @@ var App = App || {};
                     return(value);
 
                 }, { 
-                        cssclass : 'editable'
-                        // type    : 'textarea',
-                        // submit  : 'OK',
+                        cssclass : 'editable',
+                        placeholder : ''
                 });
 
                 return this; // for chainable calls, like .render().el
